@@ -793,8 +793,8 @@ Fetch data from a single archive. Note that checks for validity of the time
 period requested happen above this level so it's possible to wrap around the
 archive on a read and request data older than the archive's retention
 """
-  fromInterval = int(fromTime - (fromTime % archive['secondsPerPoint'])) + archive['secondsPerPoint']
-  untilInterval = int(untilTime - (untilTime % archive['secondsPerPoint'])) + archive['secondsPerPoint']
+  fromInterval = int(fromTime - (fromTime % archive['secondsPerPoint'])) #+ archive['secondsPerPoint']
+  untilInterval = int(untilTime - (untilTime % archive['secondsPerPoint'])) #+ archive['secondsPerPoint']
   fh.seek(archive['offset'])
   packedPoint = fh.read(pointSize)
   (baseInterval, baseValue) = struct.unpack(pointFormat, packedPoint)
